@@ -43,11 +43,15 @@
 """
 
 
-def add_new_ATM(n: int, k: int, distances: list[int]) -> list:
+def add_new_ATM(n: int, k: int, distances: list[int]) -> list[int]:
+
     # Сортируем расстояния банкоматов и сохраняем k индексов в отсортированном порядке
     indexes = sorted(sorted(range(n), key=lambda x: distances[x], reverse=True)[:k])
 
+    # Инициалиазируем счётчик, который инкрементируем после каждой вставки
     insert_count = 0
+
+    # Используя найденные индексы, делим значение по индексу пополам и рядом вставляем такое же значение
     for index in indexes:
         correct_index = index + insert_count
         distances[correct_index] = distances[correct_index] // 2

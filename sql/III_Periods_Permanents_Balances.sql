@@ -1,3 +1,4 @@
+-- CTE для объединения переводов и получения дат транзакций
 WITH merged_transfers AS (
     SELECT from_id AS acc, tdate AS dt_from,
         LEAD(tdate) OVER (PARTITION BY from_id ORDER BY tdate) AS dt_to,
@@ -12,6 +13,7 @@ WITH merged_transfers AS (
     FROM transfers
 ),
 
+-- CTE для расчета балансов на основе дат транзакций
 calculated_balances AS (
     SELECT
         acc,
@@ -21,6 +23,7 @@ calculated_balances AS (
     FROM merged_transfers
 )
 
+-- Основной запрос для выбора номера счета, даты транзакций и баланса
 SELECT
     acc,
     dt_from,

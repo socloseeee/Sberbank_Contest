@@ -22,7 +22,7 @@
 """
 
 
-def max_concatenated_number(lst):
+def max_concatenated_number(lst) -> str:
     # Сортируем список в порядке убывания
     lst.sort(reverse=True)
 

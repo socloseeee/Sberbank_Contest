@@ -10,7 +10,7 @@ import re
 
 def good_number(s: str) -> None:
 
-    # Поиск выражения формата "число/число"
+    # Поиск выражения формат "число/число"
     pattern: str = r"\d+\\\d+"
     matches = re.findall(pattern, s)
 
